@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <base target="_top">
-  <title>SAB Attendance - ระบบสแกนบาร์โค้ด</title>
+  <title><?= APP.TITLE ?></title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -12,15 +12,14 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js"></script>
-
-  <!-- 1. นำเนื้อหาในไฟล์ Styles.html และ Styles2.html มาวางแปะต่อกันตรงนี้ -->
-
+  <?!= include('Styles'); ?>
+  <?!= include('Styles2'); ?>
 </head>
 <body class="sab-doc">
   <div id="boot-loader" class="boot-loader">
     <div class="boot-card">
       <div class="boot-ring"><i class="bi bi-upc-scan"></i></div>
-      <div class="boot-name">SAB Attendance</div>
+      <div class="boot-name"><?= APP.NAME ?></div>
       <div id="bl-text" class="boot-text">กำลังเริ่มต้นระบบ…</div>
       <div class="boot-dots"><span></span><span></span><span></span></div>
     </div>
@@ -31,9 +30,10 @@
   <div id="spin-host"></div>
   <div id="toast-host"></div>
 
-  <script id="boot-data" type="application/json">{}</script>
+  <script id="boot-data" type="application/json"><?!= JSON.stringify(bootData).replace(/<\/script/gi, '<\\/script').replace(/<!--/g, '<\\!--') ?></script>
 
-  <!-- 2. นำเนื้อหาในไฟล์ ScriptsCore.html, ScriptsPages.html และ Scripts.html มาวางแปะเรียงต่อกันตรงนี้ -->
-
+  <?!= include('ScriptsCore'); ?>
+  <?!= include('ScriptsPages'); ?>
+  <?!= include('Scripts'); ?>
 </body>
 </html>
