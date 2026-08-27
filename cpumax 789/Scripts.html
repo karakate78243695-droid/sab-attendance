@@ -1,0 +1,29 @@
+<script>
+/* ═══════════════════════════════════════════════════════════════
+   SAB · Scripts.html — bootstrap loader (inject inert script blocks → SAB.boot)
+   Developer: ครูวิรัตน์ หาดคำ · www.kruwirat.com · v1.0.0
+   ═══════════════════════════════════════════════════════════════ */
+(function () {
+  function setText(t) { var e = document.getElementById('bl-text'); if (e) e.textContent = t; }
+  function fatal(t) { setText(t); if (window.console) console.error('[SAB]', t); }
+  function start() {
+    try {
+      var blocks = document.querySelectorAll('script[type^="text/x-sab"]');
+      if (!blocks.length) { fatal('ไม่พบสคริปต์หลัก'); return; }
+      for (var i = 0; i < blocks.length; i++) {
+        var src = blocks[i].textContent || '';
+        if (!src) continue;
+        var s = document.createElement('script');
+        s.text = src;
+        document.body.appendChild(s);
+      }
+      if (window.SAB && typeof window.SAB.boot === 'function') { window.SAB.boot(); }
+      else fatal('ไม่พบ SAB.boot — สคริปต์โหลดไม่สมบูรณ์');
+    } catch (e) {
+      fatal('Boot error: ' + (e && e.message ? e.message : e));
+    }
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', start, false);
+  else start();
+})();
+</script>
