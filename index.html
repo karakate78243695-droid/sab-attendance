@@ -30,10 +30,10 @@
   <div id="spin-host"></div>
   <div id="toast-host"></div>
 
-  <script id="boot-data" type="application/json"><?!= JSON.stringify(bootData).replace(/<\/script/gi, '<\\/script').replace(/<!--/g, '<\\!--') ?></script>
-
-  <?!= include('ScriptsCore'); ?>
-  <?!= include('ScriptsPages'); ?>
-  <?!= include('Scripts'); ?>
+ <script id="boot-data" type="application/json">{}</script>
+  
+<script src="ScriptsCore.js"></script>
+<script src="ScriptsPages.js"></script>
+<script src="Scripts.js"></script>
 </body>
 </html>
